@@ -1,4 +1,5 @@
 
+require 'pry'
 class School
   attr_accessor :name, :roster
 
@@ -10,7 +11,7 @@ class School
   def add_student(student_name,grade)
     @roster[grade] ||= []
     @roster[grade] << student_name
-    @roster
+
   end
 
   def grade(grade)
@@ -18,7 +19,11 @@ class School
   end
 
   def sort
-    @roster.sort
+    sorted = {}
+    @roster.each do |grade, student|
+    sorted[grade] = student.sort
+    end
+    sorted
   end
 
 end
